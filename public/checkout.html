@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Commande - Finalisez votre achat de mode africaine contemporaine SARAKI">
+  <title>Commande - SARAKI – Élégance & Fierté du Niger</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .checkout-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .checkout-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .checkout-header h1 {
+      font-family: var(--font-titre);
+      font-size: 2.5rem;
+      color: var(--noir-charbon);
+      margin-bottom: 1rem;
+    }
+    
+    .checkout-steps {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 3rem;
+      gap: 1rem;
+    }
+    
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--beige-ecru);
+      border-radius: 20px;
+      color: var(--noir-charbon);
+      opacity: 0.5;
+    }
+    
+    .step.active {
+      background-color: var(--or-metallique);
+      color: var(--noir-charbon);
+      opacity: 1;
+    }
+    
+    .step.completed {
+      background-color: #1A5C3A;
+      color: white;
+      opacity: 1;
+    }
+    
+    .checkout-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+    
+    .checkout-form {
+      background-color: var(--blanc);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid rgba(10, 10, 10, 0.1);
+    }
+    
+    .form-section {
+      margin-bottom: 2rem;
+    }
+    
+    .form-section h3 {
+      font-family: var(--font-titre);
+      color: var(--or-metallique);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--or-metallique);
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--noir-charbon);
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid rgba(10, 10, 10, 0.3);
+      background-color: var(--beige-ecru);
+      font-family: var(--font-texte);
+      border-radius: 4px;
+    }
+    
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .order-summary {
+      background-color: var(--blanc);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid rgba(10, 10, 10, 0.1);
+      position: sticky;
+      top: 2rem;
+    }
+    
+    .order-summary h3 {
+      font-family: var(--font-titre);
+      color: var(--or-metallique);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--or-metallique);
+    }
+    
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+    }
+    
+    .summary-item:last-child {
+      border-bottom: none;
+    }
+    
+    .summary-item-name {
+      color: var(--noir-charbon);
+    }
+    
+    .summary-item-price {
+      font-weight: 600;
+      color: var(--noir-charbon);
+    }
+    
+    .summary-total {
+      font-size: 1.5rem;
+      color: var(--or-metallique);
+      font-weight: 700;
+    }
+    
+    .checkout-actions {
+      margin-top: 2rem;
+    }
+    
+    .place-order-btn {
+      width: 100%;
+      background-color: var(--or-metallique);
+      color: var(--noir-charbon);
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-texte);
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .place-order-btn:hover {
+      background-color: #c9a227;
+    }
+    
+    .payment-methods {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .payment-method {
+      flex: 1;
+      padding: 1rem;
+      border: 2px solid rgba(10, 10, 10, 0.3);
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .payment-method:hover,
+    .payment-method.selected {
+      border-color: var(--or-metallique);
+      background-color: rgba(212, 175, 55, 0.1);
+    }
+    
+    .payment-method-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .order-item {
+      display: flex;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+    }
+    
+    .order-item:last-child {
+      border-bottom: none;
+    }
+    
+    .order-item-image {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-right: 1rem;
+    }
+    
+    .order-item-details {
+      flex: 1;
+    }
+    
+    .order-item-name {
+      font-weight: 600;
+      color: var(--noir-charbon);
+    }
+    
+    .order-item-quantity {
+      color: var(--noir-charbon);
+      opacity: 0.7;
+    }
+    
+    .order-item-price {
+      font-weight: 600;
+      color: var(--or-metallique);
+    }
+    
+    @media (max-width: 768px) {
+      .checkout-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .order-summary {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">SARAKI</div>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="../assets/logo.svg" alt="SARAKI Logo" width="60" height="60">
+        </a>
+      </div>
+      <nav class="nav">
+        <ul class="nav-list" id="primary-navigation" role="menubar">
+          <li role="none"><a href="index.html" role="menuitem">Accueil</a></li>
+          <li role="none"><a href="about.html" role="menuitem">À propos</a></li>
+          <li role="none"><a href="catalog.html" role="menuitem">Catalogue</a></li>
+          <li role="none"><a href="services.html" role="menuitem">Services</a></li>
+          <li role="none"><a href="gallery.html" role="menuitem">Galerie</a></li>
+          <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="primary-navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="checkout-container">
+      <div class="checkout-header">
+        <h1>Finaliser votre Commande</h1>
+        <p>Complétez vos informations pour valider votre sélection</p>
+      </div>
+      
+      <div class="checkout-steps">
+        <div class="step completed">✓ Panier</div>
+        <div class="step active">✓ Livraison</div>
+        <div class="step">✓ Paiement</div>
+        <div class="step">✓ Confirmation</div>
+      </div>
+      
+      <div class="checkout-content">
+        <div class="checkout-form">
+          <form id="checkout-form">
+            <div class="form-section">
+              <h3>Informations Personnelles</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">Prénom *</label>
+                  <input type="text" id="firstName" required>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Nom *</label>
+                  <input type="text" id="lastName" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Téléphone *</label>
+                <input type="tel" id="phone" required placeholder="+227 XX XX XX XX">
+              </div>
+            </div>
+            
+            <div class="form-section">
+              <h3>Adresse de Livraison</h3>
+              <div class="form-group">
+                <label for="address">Adresse *</label>
+                <input type="text" id="address" required>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="city">Ville *</label>
+                  <input type="text" id="city" required>
+                </div>
+                <div class="form-group">
+                  <label for="postalCode">Code Postal</label>
+                  <input type="text" id="postalCode">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="country">Pays *</label>
+                <select id="country" required>
+                  <option value="NE">Niger</option>
+                  <option value="BF">Burkina Faso</option>
+                  <option value="ML">Mali</option>
+                  <option value="CI">Côte d'Ivoire</option>
+                  <option value="SN">Sénégal</option>
+                  <option value="other">Autre</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-section">
+              <h3>Méthode de Paiement</h3>
+              <div class="payment-methods">
+                <div class="payment-method selected" onclick="selectPayment('cash')">
+                  <div class="payment-method-icon">💵</div>
+                  <div>Paiement à la livraison</div>
+                </div>
+                <div class="payment-method" onclick="selectPayment('transfer')">
+                  <div class="payment-method-icon">🏦</div>
+                  <div>Virement bancaire</div>
+                </div>
+                <div class="payment-method" onclick="selectPayment('mobile')">
+                  <div class="payment-method-icon">📱</div>
+                  <div>Mobile Money</div>
+                </div>
+              </div>
+              <input type="hidden" id="paymentMethod" value="cash">
+            </div>
+            
+            <div class="form-section">
+              <h3>Instructions Spéciales</h3>
+              <div class="form-group">
+                <label for="instructions">Instructions de livraison ou notes</label>
+                <textarea id="instructions" placeholder="Détails supplémentaires pour la livraison..."></textarea>
+              </div>
+            </div>
+            
+            <div class="checkout-actions">
+              <button type="submit" class="place-order-btn">Passer la commande</button>
+            </div>
+          </form>
+        </div>
+        
+        <div class="order-summary">
+          <h3>Récapitulatif de la Commande</h3>
+          <div id="order-items">
+            <!-- Order items loaded dynamically -->
+          </div>
+          <div class="summary-item">
+            <span class="summary-item-name">Sous-total</span>
+            <span class="summary-item-price" id="subtotal">0 FCFA</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-item-name">Livraison</span>
+            <span class="summary-item-price" id="shipping">0 FCFA</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-item-name">Total</span>
+            <span class="summary-item-price summary-total" id="total">0 FCFA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="logo">
+            <a href="index.html">
+              <img src="../assets/logo.svg" alt="SARAKI Logo" width="50" height="50">
+            </a>
+          </div>
+          <p>Maison de création et confection spécialisée dans la mode africaine contemporaine.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="catalog.html">Catalogue</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Galerie</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="tel:+22797093387">+227 97 09 33 87</a></li>
+            <li><a href="mailto:contact@saraki.ne">contact@saraki.ne</a></li>
+            <li>Niamey, Niger</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 SARAKI. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/checkout.js"></script>
+</body>
+</html>

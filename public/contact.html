@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contactez SARAKI - Prenez rendez-vous pour une consultation personnalisée ou demandez un devis. Maison de mode africaine contemporaine à Niamey, Niger.">
+  <meta name="keywords" content="contact, rendez-vous, devis, consultation, SARAKI, Niamey, Niger, mode africaine">
+  <meta name="author" content="SARAKI">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Contact - SARAKI – Élégance & Fierté du Niger">
+  <meta property="og:description" content="Contactez-nous pour une consultation personnalisée ou demandez un devis.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://saraki.ne/contact.html">
+  <title>Contact - SARAKI – Élégance & Fierté du Niger</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact SARAKI",
+    "description": "Contactez SARAKI pour une consultation personnalisée ou un devis.",
+    "url": "https://saraki.ne/contact.html",
+    "mainEntity": {
+      "@type": "LocalBusiness",
+      "name": "SARAKI",
+      "telephone": "+227 97 09 33 87",
+      "email": "contact@saraki.ne",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Niamey",
+        "addressCountry": "NE"
+      },
+      "openingHours": "Mo-Sa 09:00-18:00"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">SARAKI</div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-content">
+      <div class="logo">
+        <img src="../assets/logo.svg" alt="SARAKI">
+      </div>
+      <nav class="nav">
+        <ul class="nav-list" id="primary-navigation" role="menubar">
+          <li role="none"><a href="index.html" role="menuitem">Accueil</a></li>
+          <li role="none"><a href="about.html" role="menuitem">À propos</a></li>
+          <li role="none"><a href="catalog.html" role="menuitem">Catalogue</a></li>
+          <li role="none"><a href="services.html" role="menuitem">Services</a></li>
+          <li role="none"><a href="gallery.html" role="menuitem">Galerie</a></li>
+          <li role="none"><a href="contact.html" role="menuitem" aria-current="page">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="primary-navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="min-height: 50vh;">
+      <div class="container hero-content">
+        <h1>Contactez-Nous</h1>
+        <p>Nous serons ravis de vous accueillir et de donner vie à votre vision de l'élégance africaine</p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container">
+        <h2>Prenez Contact</h2>
+        <div class="contact-content">
+          <div class="contact-info">
+            <h3>Informations de Contact</h3>
+            <div class="contact-item">
+              <div class="contact-item-icon">📍</div>
+              <div class="contact-item-text">
+                <h4>Adresse</h4>
+                <p>Niamey, Niger</p>
+                <p>Atelier sur rendez-vous</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">📞</div>
+              <div class="contact-item-text">
+                <h4>Téléphone</h4>
+                <p>+227 97 09 33 87</p>
+                <p>+227 92 08 44 24</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">✉️</div>
+              <div class="contact-item-text">
+                <h4>Email</h4>
+                <p>contact@saraki.ne</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">💬</div>
+              <div class="contact-item-text">
+                <h4>WhatsApp</h4>
+                <p>+227 97 09 33 87</p>
+                <p>Réponse rapide garantie</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">🕐</div>
+              <div class="contact-item-text">
+                <h4>Horaires d'Ouverture</h4>
+                <p>Lundi - Samedi: 9h00 - 18h00</p>
+                <p>Dimanche: Fermé</p>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form">
+            <h3>Envoyez-nous un message</h3>
+            <form id="contactForm" aria-label="Formulaire de contact">
+              <div class="form-group">
+                <label for="name">Nom complet *</label>
+                <input type="text" id="name" name="name" required placeholder="Votre nom et prénom" aria-required="true">
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required placeholder="votre@email.com" aria-required="true">
+              </div>
+              <div class="form-group">
+                <label for="phone">Téléphone</label>
+                <input type="tel" id="phone" name="phone" placeholder="+227 XX XX XX XX">
+              </div>
+              <div class="form-group">
+                <label for="subject">Sujet *</label>
+                <select id="subject" name="subject" required aria-required="true">
+                  <option value="">Sélectionnez un sujet</option>
+                  <option value="commande">Commande / Devis</option>
+                  <option value="rendezvous">Prise de rendez-vous</option>
+                  <option value="information">Demande d'information</option>
+                  <option value="partenariat">Partenariat</option>
+                  <option value="carriere">Candidature spontanée</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" required placeholder="Décrivez votre projet ou votre question..." aria-required="true"></textarea>
+              </div>
+              <button type="submit" class="btn-primary">Envoyer le message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <div class="container">
+        <h2>Nous Retrouver</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <h3>Atelier SARAKI</h3>
+            <p>Nous accueillons nos clients sur rendez-vous dans notre atelier à Niamey. Venez découvrir nos collections, essayer nos créations ou bénéficier d'un conseil personnalisé avec nos stylistes.</p>
+            <br>
+            <p><strong>Pour prendre rendez-vous :</strong></p>
+            <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+              <li>Par téléphone : +227 97 09 33 87</li>
+              <li>Par WhatsApp : +227 97 09 33 87</li>
+              <li>Par email : contact@saraki.ne</li>
+            </ul>
+            <br>
+            <p>Nous vous recommandons de prendre rendez-vous au moins 48h à l'avance pour les consultations sur mesure.</p>
+          </div>
+          <div class="about-image">
+            <img src="https://placehold.co/600x400/0A0A0A/D4AF37?text=Atelier+SARAKI+Niamey" alt="Atelier SARAKI à Niamey" style="border-radius: 8px;">
+          </div>
+        </div>
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124313.5895488454!2d2.0842074!3d13.5316516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x11e8b4f3e7c3f1c7%3A0x9a6c9f4e5e5e5e5e!2sNiamey%2C%20Niger!5e0!3m2!1sfr!2sne!4v1717440000000!5m2!1sfr!2sne" 
+            allowfullscreen="" 
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Localisation SARAKI - Niamey, Niger">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Réseaux Sociaux</h2>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+          <p style="font-size: 1.1rem; margin-bottom: 2rem;">Suivez nos dernières créations et inspirations sur nos réseaux sociaux. Partagez votre style SARAKI avec #SARAKIFashion.</p>
+          <div class="social-links" style="justify-content: center;">
+            <a href="https://facebook.com/saraki" target="_blank" aria-label="Facebook" style="width: 60px; height: 60px; font-size: 1.2rem;">Facebook</a>
+            <a href="https://instagram.com/saraki" target="_blank" aria-label="Instagram" style="width: 60px; height: 60px; font-size: 1.2rem;">Instagram</a>
+            <a href="https://tiktok.com/@saraki" target="_blank" aria-label="TikTok" style="width: 60px; height: 60px; font-size: 1.2rem;">TikTok</a>
+            <a href="https://linkedin.com/company/saraki" target="_blank" aria-label="LinkedIn" style="width: 60px; height: 60px; font-size: 1.2rem;">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container">
+        <h2>FAQ</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <h3>Quels sont les délais de confection ?</h3>
+            <p>Pour le prêt-à-porter : disponibilité immédiate. Pour le sur mesure : 2 à 4 semaines selon la complexité du projet.</p>
+          </div>
+          <div class="service-card">
+            <h3>Proposez-vous la livraison à l'international ?</h3>
+            <p>Oui, nous expédions nos créations dans le monde entier, particulièrement vers la diaspora en Europe et Amérique du Nord.</p>
+          </div>
+          <div class="service-card">
+            <h3>Acceptez-vous les retours ?</h3>
+            <p>Les pièces sur mesure ne sont pas retournables. Pour le prêt-à-porter, les retours sont acceptés sous 7 jours sous conditions.</p>
+          </div>
+          <div class="service-card">
+            <h3>Comment fonctionne le paiement ?</h3>
+            <p> nous acceptons les paiements par espèces, mobile money, virement bancaire. Un acompte de 50% est requis pour le sur mesure.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <img src="../assets/logo.svg" alt="SARAKI" style="height: 40px; margin-bottom: 1rem;">
+          <p>Maison de création et de confection spécialisée dans la mode africaine contemporaine.</p>
+          <p>Élégance & Fierté du Niger</p>
+        </div>
+        <div class="footer-section">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="catalog.html">Catalogue</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Galerie</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="admin.html" style="color: var(--or-metallique);">🔧 Administration</a></li>
+            <li><a href="analytics.html" style="color: var(--or-metallique);">📊 Analytics</a></li>
+            <li><a href="inventory.html" style="color: var(--or-metallique);">📦 Inventaire</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">Prêt-à-porter</a></li>
+            <li><a href="services.html">Sur mesure</a></li>
+            <li><a href="services.html">Événementiel</a></li>
+            <li><a href="services.html">Styling & Conseil</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Légal</h4>
+          <ul class="footer-links">
+            <li><a href="cgv.html">CGV</a></li>
+            <li><a href="privacy.html">Politique de Confidentialité</a></li>
+            <li><a href="legal.html">Mentions Légales</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>📍 Niamey, Niger</p>
+          <p>📞 +227 97 09 33 87</p>
+          <p>✉️ contact@saraki.ne</p>
+          <div class="social-links" style="margin-top: 1rem;">
+            <a href="https://facebook.com/saraki" target="_blank" aria-label="Facebook">FB</a>
+            <a href="https://instagram.com/saraki" target="_blank" aria-label="Instagram">IG</a>
+            <a href="https://tiktok.com/@saraki" target="_blank" aria-label="TikTok">TT</a>
+            <a href="https://linkedin.com/company/saraki" target="_blank" aria-label="LinkedIn">LI</a>
+          </div>
+          <img src="../assets/logo.svg" alt="SARAKI" style="height: 30px; margin-top: 1rem;">
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 SARAKI – Tous droits réservés. | Créé avec passion au Niger</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/22797093387" class="whatsapp-float" target="_blank" aria-label="Contactez-nous sur WhatsApp"></a>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

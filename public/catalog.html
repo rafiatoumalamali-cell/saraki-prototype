@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Découvrez nos collections SARAKI - Prêt-à-porter, sur mesure, tenues événementielles. Mode africaine contemporaine haut de gamme à Niamey, Niger.">
+  <meta name="keywords" content="catalogue, collections, prêt-à-porter, sur mesure, mode africaine, Niger, tenues de mariage, SARAKI">
+  <meta name="author" content="SARAKI">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Catalogue - SARAKI – Élégance & Fierté du Niger">
+  <meta property="og:description" content="Explorez nos collections exclusives de mode africaine contemporaine.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://saraki.ne/catalog.html">
+  <title>Catalogue - SARAKI – Élégance & Fierté du Niger</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="../css/style.css?v=2">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Catalogue SARAKI",
+    "description": "Collections exclusives de mode africaine contemporaine.",
+    "url": "https://saraki.ne/catalog.html",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "Product",
+          "name": "Robe Boubou Moderne",
+          "description": "Collection signature - Coupe structurée avec touches dorées",
+          "offers": {
+            "@type": "Offer",
+            "price": "85000",
+            "priceCurrency": "XOF"
+          }
+        }
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">SARAKI</div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-content">
+      <div class="logo">
+        <img src="../assets/logo.svg" alt="SARAKI">
+      </div>
+      <nav class="nav">
+        <ul class="nav-list" id="primary-navigation" role="menubar">
+          <li role="none"><a href="index.html" role="menuitem">Accueil</a></li>
+          <li role="none"><a href="about.html" role="menuitem">À propos</a></li>
+          <li role="none"><a href="catalog.html" role="menuitem" aria-current="page">Catalogue</a></li>
+          <li role="none"><a href="services.html" role="menuitem">Services</a></li>
+          <li role="none"><a href="gallery.html" role="menuitem">Galerie</a></li>
+          <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="primary-navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="min-height: 50vh;">
+      <div class="container hero-content">
+        <h1>Nos Collections</h1>
+        <p>Découvrez nos créations uniques alliant tradition africaine et modernité</p>
+      </div>
+    </section>
+
+    <section class="featured-products catalog-section">
+      <div class="container">
+        <h2>Nos Collections</h2>
+        
+        <!-- Search Bar -->
+        <div class="search-container">
+          <input type="text" id="search-input" placeholder="Rechercher un produit..." class="search-input">
+          <button class="search-button" onclick="searchProducts()">🔍</button>
+        </div>
+        
+        <!-- Advanced Filters -->
+        <div class="advanced-filters">
+          <div class="filter-group">
+            <label for="price-range">Prix maximum :</label>
+            <select id="price-range" class="filter-select" onchange="applyFilters()">
+              <option value="all">Tous les prix</option>
+              <option value="50000">Moins de 50 000 FCFA</option>
+              <option value="100000">Moins de 100 000 FCFA</option>
+              <option value="150000">Moins de 150 000 FCFA</option>
+              <option value="200000">Moins de 200 000 FCFA</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label for="sort-by">Trier par :</label>
+            <select id="sort-by" class="filter-select" onchange="applyFilters()">
+              <option value="default">Par défaut</option>
+              <option value="price-asc">Prix croissant</option>
+              <option value="price-desc">Prix décroissant</option>
+              <option value="name-asc">Nom A-Z</option>
+              <option value="name-desc">Nom Z-A</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label for="stock-filter">Stock :</label>
+            <select id="stock-filter" class="filter-select" onchange="applyFilters()">
+              <option value="all">Tous</option>
+              <option value="in-stock">En stock</option>
+              <option value="low-stock">Stock limité</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">Tous</button>
+          <button class="filter-btn" data-filter="femme">Femme</button>
+          <button class="filter-btn" data-filter="homme">Homme</button>
+          <button class="filter-btn" data-filter="sur-mesure">Sur Mesure</button>
+          <button class="filter-btn" data-filter="evenementiel">Événementiel</button>
+        </div>
+        <div class="product-grid" id="products-container">
+          <!-- Products will be loaded dynamically from JSON -->
+        </div>
+        <div id="no-results" class="no-results">
+          <p>Aucun produit trouvé correspondant à votre recherche.</p>
+          <button class="btn-secondary" onclick="clearSearch()" style="margin-top: 1rem;">Réinitialiser la recherche</button>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="cart.html" class="btn-primary">Voir mon panier</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container">
+        <h2>Intéressé par une Création ?</h2>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+          <p style="font-size: 1.1rem; margin-bottom: 2rem;">Nos pièces sont disponibles en prêt-à-porter ou entièrement personnalisables selon vos goûts et mensurations. Contactez-nous pour une consultation personnalisée.</p>
+          <div class="hero-buttons">
+            <a href="contact.html" class="btn-primary">Demander un devis</a>
+            <a href="services.html" class="btn-secondary">Nos services sur mesure</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Product Details Modal -->
+  <div class="product-modal" id="productModal">
+    <div class="product-modal-content">
+      <button class="product-modal-close" onclick="closeProductModal()">&times;</button>
+      <div class="product-modal-body">
+        <img src="" alt="" class="product-modal-image" id="modalImage">
+        <div class="product-modal-details">
+          <h2 class="product-modal-title" id="modalTitle">Nom du produit</h2>
+          <p class="product-modal-category" id="modalCategory">Catégorie</p>
+          <p class="product-modal-price" id="modalPrice">Prix</p>
+          <p class="product-modal-description" id="modalDescription">Description</p>
+          <div class="product-modal-stock">
+            <span id="modalStockStatus" class="stock-status">En stock</span>
+            <span id="modalStockCount">10 unités disponibles</span>
+          </div>
+          <div class="product-modal-quantity">
+            <button onclick="decreaseModalQuantity()">-</button>
+            <input type="number" id="modalQuantity" value="1" min="1" onchange="validateModalQuantity()">
+            <button onclick="increaseModalQuantity()">+</button>
+          </div>
+          <div class="product-modal-actions">
+            <button class="btn-add-to-cart" id="modalAddToCart" onclick="addToCartFromModal()">Ajouter au panier</button>
+            <button class="btn-proceed-checkout" onclick="proceedToCheckoutFromModal()">Passer la commande</button>
+            <button class="btn-close-modal" onclick="closeProductModal()">Fermer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <img src="../assets/logo.svg" alt="SARAKI" style="height: 40px; margin-bottom: 1rem;">
+          <p>Maison de création et de confection spécialisée dans la mode africaine contemporaine.</p>
+          <p>Élégance & Fierté du Niger</p>
+        </div>
+        <div class="footer-section">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="catalog.html">Catalogue</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Galerie</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="admin.html" style="color: var(--or-metallique);">🔧 Administration</a></li>
+            <li><a href="analytics.html" style="color: var(--or-metallique);">📊 Analytics</a></li>
+            <li><a href="inventory.html" style="color: var(--or-metallique);">📦 Inventaire</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Collections</h4>
+          <ul class="footer-links">
+            <li><a href="catalog.html">Collection Signature</a></li>
+            <li><a href="catalog.html">Collection Essentielle</a></li>
+            <li><a href="catalog.html">Sur Mesure</a></li>
+            <li><a href="catalog.html">Événementiel</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Légal</h4>
+          <ul class="footer-links">
+            <li><a href="cgv.html">CGV</a></li>
+            <li><a href="privacy.html">Politique de Confidentialité</a></li>
+            <li><a href="legal.html">Mentions Légales</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Suivez-nous</h4>
+          <div class="social-links">
+            <a href="https://facebook.com/saraki" target="_blank" aria-label="Facebook">FB</a>
+            <a href="https://instagram.com/saraki" target="_blank" aria-label="Instagram">IG</a>
+            <a href="https://tiktok.com/@saraki" target="_blank" aria-label="TikTok">TT</a>
+            <a href="https://linkedin.com/company/saraki" target="_blank" aria-label="LinkedIn">LI</a>
+          </div>
+          <p style="margin-top: 1rem;">WhatsApp: +227 97 09 33 87</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 SARAKI – Tous droits réservés. | Créé avec passion au Niger</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/22797093387" class="whatsapp-float" target="_blank" aria-label="Contactez-nous sur WhatsApp"></a>
+
+  <script src="../js/main.js?v=2"></script>
+  <script src="../js/cart.js?v=2"></script>
+  <script src="../js/product-modal.js?v=2"></script>
+</body>
+</html>

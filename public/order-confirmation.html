@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Confirmation de commande - Votre commande SARAKI a été enregistrée avec succès">
+  <title>Confirmation de Commande - SARAKI</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .confirmation-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    
+    .success-icon {
+      font-size: 5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .confirmation-title {
+      font-family: var(--font-titre);
+      font-size: 2.5rem;
+      color: var(--noir-charbon);
+      margin-bottom: 1rem;
+    }
+    
+    .confirmation-subtitle {
+      font-size: 1.2rem;
+      color: var(--noir-charbon);
+      opacity: 0.7;
+      margin-bottom: 2rem;
+    }
+    
+    .order-details {
+      background-color: var(--blanc);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid rgba(10, 10, 10, 0.1);
+      margin: 2rem 0;
+      text-align: left;
+    }
+    
+    .order-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--or-metallique);
+      margin-bottom: 1rem;
+    }
+    
+    .order-info {
+      margin-bottom: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+    }
+    
+    .order-info:last-child {
+      border-bottom: none;
+    }
+    
+    .order-info-label {
+      font-weight: 600;
+      color: var(--noir-charbon);
+    }
+    
+    .order-info-value {
+      color: var(--noir-charbon);
+      opacity: 0.8;
+    }
+    
+    .next-steps {
+      margin-top: 2rem;
+    }
+    
+    .next-steps h3 {
+      font-family: var(--font-titre);
+      color: var(--or-metallique);
+      margin-bottom: 1rem;
+    }
+    
+    .next-steps ul {
+      text-align: left;
+      padding-left: 2rem;
+    }
+    
+    .next-steps li {
+      margin-bottom: 0.5rem;
+      color: var(--noir-charbon);
+    }
+    
+    .action-buttons {
+      margin-top: 3rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+    
+    .action-buttons a {
+      padding: 1rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-family: var(--font-texte);
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-home {
+      background-color: var(--noir-charbon);
+      color: var(--blanc);
+    }
+    
+    .btn-home:hover {
+      background-color: var(--or-metallique);
+    }
+    
+    .btn-catalog {
+      background-color: var(--or-metallique);
+      color: var(--noir-charbon);
+    }
+    
+    .btn-catalog:hover {
+      background-color: #c9a227;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">SARAKI</div>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="../assets/logo.svg" alt="SARAKI Logo" width="60" height="60">
+        </a>
+      </div>
+      <nav class="nav">
+        <ul class="nav-list" id="primary-navigation" role="menubar">
+          <li role="none"><a href="index.html" role="menuitem">Accueil</a></li>
+          <li role="none"><a href="about.html" role="menuitem">À propos</a></li>
+          <li role="none"><a href="catalog.html" role="menuitem">Catalogue</a></li>
+          <li role="none"><a href="services.html" role="menuitem">Services</a></li>
+          <li role="none"><a href="gallery.html" role="menuitem">Galerie</a></li>
+          <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="primary-navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="confirmation-container">
+      <div class="success-icon">✅</div>
+      <h1 class="confirmation-title">Commande Confirmée !</h1>
+      <p class="confirmation-subtitle">Merci pour votre confiance. Votre commande a été enregistrée avec succès.</p>
+      
+      <div class="order-details">
+        <div class="order-number" id="order-number">Commande #</div>
+        <div class="order-info">
+          <div class="order-info-label">Date de commande :</div>
+          <div class="order-info-value" id="order-date">-</div>
+        </div>
+        <div class="order-info">
+          <div class="order-info-label">Méthode de paiement :</div>
+          <div class="order-info-value" id="payment-method">-</div>
+        </div>
+        <div class="order-info">
+          <div class="order-info-label">Montant total :</div>
+          <div class="order-info-value" id="order-total">-</div>
+        </div>
+      </div>
+      
+      <div class="next-steps">
+        <h3>Prochaines étapes</h3>
+        <ul>
+          <li>📧 Vous recevrez un email de confirmation avec les détails de votre commande</li>
+          <li>📱 Notre équipe vous contactera pour confirmer la disponibilité</li>
+          <li>📦 Dès que votre commande est prête, nous vous informerons pour la livraison</li>
+          <li>💰 Le paiement sera effectué selon la méthode choisie lors de la livraison</li>
+        </ul>
+      </div>
+      
+      <div class="action-buttons">
+        <a href="index.html" class="btn-home">Retour à l'accueil</a>
+        <a href="catalog.html" class="btn-catalog">Continuer vos achats</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="logo">
+            <a href="index.html">
+              <img src="../assets/logo.svg" alt="SARAKI Logo" width="50" height="50">
+            </a>
+          </div>
+          <p>Maison de création et confection spécialisée dans la mode africaine contemporaine.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="catalog.html">Catalogue</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Galerie</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="tel:+22797093387">+227 97 09 33 87</a></li>
+            <li><a href="mailto:contact@saraki.ne">contact@saraki.ne</a></li>
+            <li>Niamey, Niger</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 SARAKI. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/order-confirmation.js"></script>
+</body>
+</html>

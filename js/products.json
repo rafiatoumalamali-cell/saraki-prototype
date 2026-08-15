@@ -1,0 +1,31 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Robe Boubou Moderne",
+      "price": "85 000 FCFA",
+      "description": "Collection signature - Coupe structurée avec touches dorées",
+      "category": "femme",
+      "image": "../assets/images/products/robe-boubou.jpg",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "name": "Ensemble Homme Chic",
+      "price": "75 000 FCFA",
+      "description": "Chemise et pantalon - Tissu noble premium",
+      "category": "homme",
+      "image": "../assets/images/products/ensemble-homme.jpg",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "name": "Tenue de Mariage",
+      "price": "Sur devis",
+      "description": "Haute couture - 100% personnalisé",
+      "category": "sur-mesure",
+      "image": "../assets/images/products/tenue-mariage.jpg",
+      "featured": true
+    }
+  ]
+}

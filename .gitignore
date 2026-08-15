@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+
+node_modules/
+vendor/
+
+.vscode/
+.idea/
+
+*.log
+.DS_Store
+Thumbs.db

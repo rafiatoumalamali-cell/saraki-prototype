@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Page non trouvée - SARAKI">
+  <title>404 - Page Non Trouvée - SARAKI</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .error-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, var(--noir-charbon) 0%, #1a1a1a 100%);
+    }
+    
+    .error-content {
+      max-width: 600px;
+    }
+    
+    .error-code {
+      font-family: var(--font-titre);
+      font-size: 8rem;
+      color: var(--or-metallique);
+      line-height: 1;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    }
+    
+    .error-title {
+      font-family: var(--font-titre);
+      font-size: 2.5rem;
+      color: var(--blanc);
+      margin-bottom: 1rem;
+    }
+    
+    .error-message {
+      color: var(--beige-ecru);
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+    
+    .error-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .error-actions a {
+      padding: 1rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-family: var(--font-texte);
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-home {
+      background-color: var(--or-metallique);
+      color: var(--noir-charbon);
+    }
+    
+    .btn-home:hover {
+      background-color: #c9a227;
+      transform: translateY(-2px);
+    }
+    
+    .btn-catalog {
+      background-color: transparent;
+      color: var(--or-metallique);
+      border: 2px solid var(--or-metallique);
+    }
+    
+    .btn-catalog:hover {
+      background-color: var(--or-metallique);
+      color: var(--noir-charbon);
+    }
+    
+    .error-illustration {
+      font-size: 5rem;
+      margin-bottom: 2rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <div class="error-content">
+      <div class="error-illustration">👗</div>
+      <div class="error-code">404</div>
+      <h1 class="error-title">Page Non Trouvée</h1>
+      <p class="error-message">
+        Désolé, la page que vous recherchez semble avoir disparu dans notre collection.
+        Peut-être a-t-elle été déplacée ou supprimée.
+      </p>
+      <div class="error-actions">
+        <a href="index.html" class="btn-home">Retour à l'accueil</a>
+        <a href="catalog.html" class="btn-catalog">Voir le catalogue</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics - SARAKI Admin</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .analytics-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .analytics-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--or-metallique);
+    }
+    
+    .analytics-nav {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .analytics-nav button {
+      padding: 0.5rem 1rem;
+      background-color: var(--noir-charbon);
+      color: var(--or-metallique);
+      border: 1px solid var(--or-metallique);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .analytics-nav button:hover,
+    .analytics-nav button.active {
+      background-color: var(--or-metallique);
+      color: var(--noir-charbon);
+    }
+    
+    .date-range-selector {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    
+    .date-range-selector select {
+      padding: 0.5rem;
+      background-color: var(--beige-ecru);
+      border: 1px solid var(--or-metallique);
+      color: var(--noir-charbon);
+    }
+    
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .metric-card {
+      background-color: var(--blanc);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid rgba(10, 10, 10, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .metric-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--or-metallique);
+      margin: 0.5rem 0;
+    }
+    
+    .metric-label {
+      font-size: 0.9rem;
+      color: var(--noir-charbon);
+      opacity: 0.7;
+    }
+    
+    .metric-change {
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+    }
+    
+    .metric-change.positive {
+      color: #1A5C3A;
+    }
+    
+    .metric-change.negative {
+      color: #5C1A1A;
+    }
+    
+    .chart-section {
+      background-color: var(--blanc);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid rgba(10, 10, 10, 0.1);
+      margin-bottom: 2rem;
+    }
+    
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .chart-container {
+      position: relative;
+      height: 300px;
+    }
+    
+    .top-products-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    
+    .top-products-table th,
+    .top-products-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+    }
+    
+    .top-products-table th {
+      background-color: var(--noir-charbon);
+      color: var(--or-metallique);
+      font-weight: 600;
+    }
+    
+    .traffic-sources {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .traffic-source-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem;
+      background-color: var(--beige-ecru);
+      border-radius: 4px;
+    }
+    
+    .traffic-source-icon {
+      font-size: 1.5rem;
+    }
+    
+    .traffic-source-info {
+      flex: 1;
+    }
+    
+    .traffic-source-name {
+      font-weight: 600;
+      color: var(--noir-charbon);
+    }
+    
+    .traffic-source-value {
+      font-size: 0.9rem;
+      color: var(--or-metallique);
+    }
+    
+    .recent-activity {
+      margin-top: 1rem;
+    }
+    
+    .activity-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+    }
+    
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+    
+    .activity-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--or-metallique);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--noir-charbon);
+      font-weight: 600;
+    }
+    
+    .activity-details {
+      flex: 1;
+    }
+    
+    .activity-title {
+      font-weight: 600;
+      color: var(--noir-charbon);
+    }
+    
+    .activity-time {
+      font-size: 0.8rem;
+      color: var(--noir-charbon);
+      opacity: 0.6;
+    }
+    
+    .analytics-section {
+      display: none;
+    }
+    
+    .analytics-section.active {
+      display: block;
+    }
+    
+    @media (max-width: 768px) {
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .analytics-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      
+      .chart-container {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="analytics-container">
+    <div class="analytics-header">
+      <h1>📊 Dashboard Analytics SARAKI</h1>
+      <div class="date-range-selector">
+        <label>Période:</label>
+        <select id="dateRange" onchange="updateAnalytics()">
+          <option value="7">7 derniers jours</option>
+          <option value="30" selected>30 derniers jours</option>
+          <option value="90">90 derniers jours</option>
+          <option value="365">Cette année</option>
+        </select>
+        <a href="admin.html" class="btn-secondary">← Retour Admin</a>
+      </div>
+    </div>
+    
+    <div class="analytics-nav">
+      <button class="active" onclick="showSection('overview')">Vue d'ensemble</button>
+      <button onclick="showSection('products')">Produits</button>
+      <button onclick="showSection('traffic')">Trafic</button>
+      <button onclick="showSection('activity')">Activité</button>
+    </div>
+    
+    <!-- Section Vue d'ensemble -->
+    <div id="overview-section" class="analytics-section active">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">Visiteurs</div>
+          <div class="metric-value" id="visitors-metric">0</div>
+          <div class="metric-change positive" id="visitors-change">+12.5%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Vues de pages</div>
+          <div class="metric-value" id="pageviews-metric">0</div>
+          <div class="metric-change positive" id="pageviews-change">+8.3%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Taux de rebond</div>
+          <div class="metric-value" id="bounce-metric">0%</div>
+          <div class="metric-change negative" id="bounce-change">-2.1%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Durée moyenne</div>
+          <div class="metric-value" id="duration-metric">0m</div>
+          <div class="metric-change positive" id="duration-change">+15.2%</div>
+        </div>
+      </div>
+      
+      <div class="chart-section">
+        <div class="chart-header">
+          <h3>Visiteurs par jour</h3>
+        </div>
+        <div class="chart-container">
+          <canvas id="visitorsChart"></canvas>
+        </div>
+      </div>
+      
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">Formulaire contact</div>
+          <div class="metric-value" id="contact-forms-metric">0</div>
+          <div class="metric-change positive" id="contact-forms-change">+5.2%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Newsletter</div>
+          <div class="metric-value" id="newsletter-metric">0</div>
+          <div class="metric-change positive" id="newsletter-change">+22.1%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Clics WhatsApp</div>
+          <div class="metric-value" id="whatsapp-metric">0</div>
+          <div class="metric-change positive" id="whatsapp-change">+18.7%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Appels reçus</div>
+          <div class="metric-value" id="calls-metric">0</div>
+          <div class="metric-change negative" id="calls-change">-3.4%</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Section Produits -->
+    <div id="products-section" class="analytics-section">
+      <div class="chart-section">
+        <div class="chart-header">
+          <h3>Produits les plus vus</h3>
+        </div>
+        <table class="top-products-table">
+          <thead>
+            <tr>
+              <th>Produit</th>
+              <th>Vues</th>
+              <th>Conversions</th>
+              <th>Taux de conversion</th>
+            </tr>
+          </thead>
+          <tbody id="top-products-body">
+            <!-- Products loaded dynamically -->
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="chart-section">
+        <div class="chart-header">
+          <h3>Vues de produits par catégorie</h3>
+        </div>
+        <div class="chart-container">
+          <canvas id="productsChart"></canvas>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Section Trafic -->
+    <div id="traffic-section" class="analytics-section">
+      <div class="chart-section">
+        <div class="chart-header">
+          <h3>Sources de trafic</h3>
+        </div>
+        <div class="traffic-sources" id="traffic-sources">
+          <!-- Traffic sources loaded dynamically -->
+        </div>
+      </div>
+      
+      <div class="chart-section">
+        <div class="chart-header">
+          <h3>Appareils utilisés</h3>
+        </div>
+        <div class="chart-container">
+          <canvas id="devicesChart"></canvas>
+        </div>
+      </div>
+      
+      <div class="chart-section">
+        <div class="chart-header">
+          <h3>Pages les plus visitées</h3>
+        </div>
+        <table class="top-products-table">
+          <thead>
+            <tr>
+              <th>Page</th>
+              <th>Vues</th>
+              <th>Temps moyen</th>
+              <th>Taux de rebond</th>
+            </tr>
+          </thead>
+          <tbody id="top-pages-body">
+            <!-- Pages loaded dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <!-- Section Activité -->
+    <div id="activity-section" class="analytics-section">
+      <div class="chart-section">
+        <div class="chart-header">
+          <h3>Activité récente</h3>
+        </div>
+        <div class="recent-activity" id="recent-activity">
+          <!-- Activity loaded dynamically -->
+        </div>
+      </div>
+      
+      <div class="chart-section">
+        <div class="chart-header">
+          <h3>Interactions par heure</h3>
+        </div>
+        <div class="chart-container">
+          <canvas id="activityChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../js/analytics.js"></script>
+</body>
+</html>

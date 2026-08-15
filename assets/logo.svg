@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 90" width="200" height="90">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#F4E4BC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F4E4BC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Crown -->
+  <path d="M75 12 L80 3 L85 10 L90 6 L95 10 L100 3 L105 12 Z" fill="url(#goldGradient)" stroke="#D4AF37" stroke-width="0.5"/>
+  <circle cx="75" cy="12" r="1.5" fill="#D4AF37"/>
+  <circle cx="80" cy="3" r="2" fill="#D4AF37"/>
+  <circle cx="90" cy="6" r="1.5" fill="#D4AF37"/>
+  <circle cx="100" cy="3" r="2" fill="#D4AF37"/>
+  <circle cx="105" cy="12" r="1.5" fill="#D4AF37"/>
+  
+  <!-- Laurel wreath circle -->
+  <circle cx="90" cy="38" r="22" fill="none" stroke="url(#goldGradient)" stroke-width="1.5" stroke-dasharray="2,3"/>
+  
+  <!-- Inner decorative circle -->
+  <circle cx="90" cy="38" r="18" fill="none" stroke="url(#goldGradient)" stroke-width="0.5"/>
+  
+  <!-- Stylized S in center -->
+  <text x="90" y="46" font-family="Playfair Display, serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">S</text>
+  
+  <!-- SARAKI text -->
+  <text x="90" y="70" font-family="Playfair Display, serif" font-size="16" font-weight="700" fill="url(#goldGradient)" text-anchor="middle" letter-spacing="4">SARAKI</text>
+  
+  <!-- Tagline -->
+  <text x="90" y="82" font-family="Montserrat, sans-serif" font-size="5" font-weight="300" fill="url(#goldGradient2)" text-anchor="middle" letter-spacing="1.5">ROYAUTÉ. EXCELLENCE. HÉRITAGE</text>
+</svg>
